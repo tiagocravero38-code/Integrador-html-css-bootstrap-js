@@ -1,0 +1,13 @@
+# dependencias (todavía no las usamos, pero vienen pronto)
+node_modules/
+
+# configuración local del editor
+.vscode/
+.idea/
+
+# archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# logs y temporales
+*.log
