@@ -75,3 +75,36 @@ if (buscador) {
     mostrarServicios(filtrados);
   });
 }
+// --- 8. El formulario de contacto ---
+const formulario = document.querySelector('#form-contacto');
+
+// Igual que antes, preguntamos si el formulario existe en esta página
+if (formulario) {
+
+  const mensaje = document.querySelector('#mensaje');
+  const contadorTexto = document.querySelector('#contador');
+
+  // 8.1 contar caracteres mientras se escribe
+  mensaje.addEventListener('input', function () {
+    contadorTexto.textContent = mensaje.value.length;
+  });
+
+  // 8.2 atender el envío
+  formulario.addEventListener('submit', function (evento) {
+    // Esto evita que el navegador recargue la página y mande los datos al servidor
+    evento.preventDefault();
+
+    const nombre = document.querySelector('#nombre').value;
+    const aviso = document.querySelector('#aviso');
+
+    // Armamos el mensaje personalizado
+    aviso.textContent = 'Gracias ' + nombre + ', recibimos tu consulta.';
+    // Le sacamos la clase 'd-none' de Bootstrap para que el cartel se haga visible
+    aviso.classList.remove('d-none');
+
+    // Limpiamos el formulario y volvemos el contador a 0
+    formulario.reset();
+    contadorTexto.textContent = '0';
+  });
+
+}
