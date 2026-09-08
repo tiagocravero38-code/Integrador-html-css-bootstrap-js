@@ -49,7 +49,29 @@ function mostrarServicios(lista) {
   });
 
   cuerpo.innerHTML = filas;
+
+  // Actualizar el contador (Paso 11)
+  const contador = document.querySelector('#contador-resultados');
+  if (contador) {
+    contador.textContent = lista.length + ' servicio(s)';
+  }
 }
 
 // --- 6. Dibujar todo al abrir la página ---
 mostrarServicios(servicios);
+
+
+// --- 7. Filtrar mientras el usuario escribe (Paso 11) ---
+const buscador = document.querySelector('#buscador');
+
+if (buscador) {
+  buscador.addEventListener('input', function () {
+    const texto = buscador.value.toLowerCase();
+
+    const filtrados = servicios.filter(function (servicio) {
+      return servicio.nombre.toLowerCase().includes(texto);
+    });
+
+    mostrarServicios(filtrados);
+  });
+}
